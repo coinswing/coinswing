@@ -1,0 +1,28 @@
+{
+    "name": "coinswing",
+    "subdomain": "coinswing",
+    "domains": [
+        "coinswing.com",
+        "www.coinswing.com"
+    ],
+    "author": "coinswing.com",
+    "url": "http://coinswing.com",
+    "version": "0.1.0",
+    "dependencies": {
+        "express": "3.1.x",
+        "jade": "0.28.x",
+        "redis": "0.8.x",
+        "nohm": "0.9.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/coinswing/coinswing.git"
+    },
+    "main": "./lib/main",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": ">= 0.8.x"
+    }
+}
