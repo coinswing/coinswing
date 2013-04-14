@@ -25,7 +25,7 @@ coinswing(redis, function(err, coinswing) {
 
     app.get("/", function(req, res) {
         res.render("round", {
-            entries: coinswing.currentRound.p("entries")
+            entries: coinswing.currentRound.prop("entries")
         });
     });
 
