@@ -12,7 +12,12 @@
         "express": "3.1.x",
         "jade": "0.28.x",
         "redis": "0.8.x",
-        "nohm": "0.9.x"
+        "nohm": "0.9.x",
+        "request": "2.16.x",
+        "redis-url": "0.0.x"
+    },
+    "devDependencies": {
+        "docco": "0.6.x"
     },
     "repository": {
         "type": "git",
@@ -20,7 +25,8 @@
     },
     "main": "./lib/main",
     "scripts": {
-        "start": "node app.js"
+        "start": "node app.js",
+        "docs": "docco lib/*.js"
     },
     "engines": {
         "node": ">= 0.8.x"

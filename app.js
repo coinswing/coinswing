@@ -1,9 +1,7 @@
 var coinswing = require("./"),
-    redis = require("redis").createClient(),
+    redis = require("redis-url").createClient(),
     express = require("express"),
     app = express();
-
-// (pool / no. winners) * odds * (bettor's bet / total of all winning bettor's bets)
 
 coinswing(redis, function(err, coinswing) {
     app.configure(function() {
@@ -26,7 +24,9 @@ coinswing(redis, function(err, coinswing) {
     });
 
     app.get("/", function(req, res) {
-        res.render("index");
+        res.render("round", {
+            entries: coinswing.currentRound.p("entries")
+        });
     });
 
     app.listen(8080);
