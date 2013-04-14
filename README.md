@@ -33,7 +33,7 @@ environment variables through their interfaces).
 * `REDIS_URL`: The URL where the Redis database is located
 * `COINBASE_API_KEY`: The API key of the Coinbase account used to send bitcoins to bettors
 * `COINBASE_CALLBACK_URL`: The URL to listen for Coinbase callbacks on (receiving bets from bettors) -
-  must be a unique URL because for some reason Coinbase doesn't sign their HTTP requests (why?)
+  must be a unique URL because for some reason Coinbase doesn't sign their HTTP requests (wtf?)
 
 ## Documentation
 
