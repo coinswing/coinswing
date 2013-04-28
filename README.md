@@ -18,19 +18,23 @@ Coinswing is a website for betting with bitcoins on trending YouTube videos. The
    may change to a premium or a donation based income in the future to prevent this.
 6. Runner-ups are not rewarded any bitcoins regardless of their odds.
 
+## Running
+
+`npm install && npm run-script start`
+
 ## Stack
 
 Coinswing is a pretty straight-forward Node.js application, so it can be hosted
 on pretty much any PaaS supporting Node.js, such as Heroku or Nodejitsu. It can
-of course also been hosted on your own virtualized system. Coinswing uses a [Redis](http://redis.io)
+of course also been hosted on your own virtualized system. Coinswing uses a [MongoDB](http://mongodb.org)
 database for storing all data. All bitcoin transactions and storage are securely handled
-by the [Coinbase](http://coinbase.com) service. All sensitive data and configurable settings
-are handled through environment variables (PaaS providers should provide you the option to set
+by the [Coinbase](http://coinbase.com) service. All configurable data
+is handled through environment variables (PaaS providers should provide you the option to set
 environment variables through their interfaces).
 
 ### Environment Variables
 
-* `REDIS_URL`: The URL where the Redis database is located
+* `MONGODB_URL`: The URL where the MongoDB database is located
 * `COINBASE_API_KEY`: The API key of the Coinbase account used to send bitcoins to bettors
 * `COINBASE_CALLBACK_URL`: The URL to listen for Coinbase callbacks on (receiving bets from bettors) -
   must be a unique URL because for some reason Coinbase doesn't sign their HTTP requests (wtf?)
@@ -38,4 +42,4 @@ environment variables through their interfaces).
 ## Documentation
 
 The source code is roughly documented. You can generate the resulting documentation pages using
-`npm install & npm run-script docs`.
+`npm install && npm run-script docs`.
