@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .span12
+    unless user
+      include includes/intro
+
+  if round
+    .span12
+      ul.thumbnails
+        for entry in round.entries
+          li.span4
+            .thumbnail
+              a(href="//youtu.be/#{entry.video}", target="_blank", title="#{entry.title}")
+                img(src="//img.youtube.com/vi/#{entry.video}/hqdefault.jpg", alt="#{entry.title}")
+              .caption
+                p.text-left
+                  div.ellipsis.pull-left.entry-title
+                    a(href="//youtu.be/#{entry.video}", target="_blank", title="#{entry.title}")= entry.title
+                  a.btn.btn-primary.pull-right(href="https://coinbase.com/checkouts/4d4b84bbad4508b64b61d372ea394dad", target="_blank") Bet
+                div.clearfix
+                hr
+                .progress
+                  .bar.text-center(style="width: 67%;")
+                    strong 2฿ won
+                  .text-center
+                    strong per 1฿

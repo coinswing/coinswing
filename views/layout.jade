@@ -1,0 +1,48 @@
+!!! 5
+html(lang="en")
+  head
+    meta(charset="utf-8")
+
+    title Coinswing - bet bitcoins on trending videos!
+
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="An online betting website where bettors stake bitcoins on trending YouTube videos")
+    meta(name="author", content="coinswing.com")
+
+    link(href="css/bootstrap.min.css", rel="stylesheet")
+    link(href="css/bootstrap-responsive.min.css", rel="stylesheet")
+    link(href="css/main.css", rel="stylesheet")
+
+    //if lt IE 9
+      script(src="js/html5shiv.min.js")
+
+    link(rel="apple-touch-icon-precomposed", sizes="144x144", href="img/apple-touch-icon-144-precomposed.png")
+    link(rel="apple-touch-icon-precomposed", sizes="114x114", href="img/apple-touch-icon-114-precomposed.png")
+    link(rel="apple-touch-icon-precomposed", sizes="72x72", href="img/apple-touch-icon-72-precomposed.png")
+    link(rel="apple-touch-icon-precomposed", href="img/apple-touch-icon-57-precomposed.png")
+    link(rel="shortcut icon", href="img/favicon.png")
+
+    script(type="text/javascript", src="js/jquery.min.js")
+    script(type="text/javascript", src="js/bootstrap.min.js")
+    script(type="text/javascript", src="js/main.js")
+
+    block meta-header
+  body
+    .container
+      .row.top-buffer
+        .span12
+          if user
+            include includes/alert
+          include includes/nav
+
+        block content-header
+      .row
+        block content
+      .row
+        .span12
+          hr
+          include includes/footer.jade
+
+        block content-footer
+
+    block meta-footer

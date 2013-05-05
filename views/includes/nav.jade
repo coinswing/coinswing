@@ -1,0 +1,58 @@
+.navbar
+  .navbar-inner
+    .container-fluid
+      a.btn.btn-navbar(data-target=".navbar-responsive-collapse", data-toggle="collapse")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand(href="#") Coinswing
+      .nav-collapse.collapse.navbar-responsive-collapse
+        ul.nav
+          if "home" === active
+            li.active
+              a(href="/") Home
+          else
+            li
+              a(href="/") Home
+          if "getting-started" === active
+            li.active
+              a(href="/getting-started") Getting Started
+          else
+            li
+              a(href="/getting-started") Getting Started
+          if "rounds" === active
+            li.active
+              a(href="/rounds") Rounds
+          else
+            li
+              a(href="/rounds") Rounds
+        ul.nav.pull-right
+          if user
+            li.dropdown
+              a.dropdown-toggle(data-toggle="dropdown", href="#")
+                | #{user.email}
+                strong.caret
+              ul.dropdown-menu
+                li
+                  a(href="/bets") My Bets
+                li.divider
+                li
+                  a(href="/logout") Sign Out
+          else
+            li
+              a(href="/getting-started") Sign Up
+            li.divider-vertical
+            li.dropdown
+              a.dropdown-toggle(data-toggle="dropdown", href="#")
+                | Sign In
+                strong.caret
+              .dropdown-menu(style="padding: 15px; padding-bottom: 0px;")
+                form(action="/login", method="post", accept-charset="UTF-8")
+                  fieldset
+                    input(name="email", type="text", placeholder="Email")
+                    input(name="password", type="password", placeholder="Password")
+                    label.checkbox
+                      input(name="remember", type="checkbox")
+                      | Remember me
+                    input(type="hidden", name="_csrf", value=csrf)
+                    input.btn.btn-primary(data-disable-with="Signing in...", name="commit", type="submit", value="Sign in")

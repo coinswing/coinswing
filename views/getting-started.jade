@@ -1,0 +1,85 @@
+extends layout
+
+block content
+  .span4
+    h3 Step 1
+    p
+      | Register an account with us. It's completely free and we don't need any personal details
+      | besides a valid email. It's important that a valid email (that isn't temporary)
+      | is used, because invoices to receive your winnings are sent to your account's
+      | email.
+      hr
+      if !user
+        if "undefined" !== typeof invalids
+          if 1 === invalids.length
+            div(class="alert alert-error")
+              button.close(type="button", data-dismiss="alert") &times
+              strong Oops!
+              |  #{invalids[0]}
+          else
+            div(class="alert alert-error")
+              button.close(type="button", data-dismiss="alert") &times
+              strong Oops!
+              |  There are a few issues with what you've entered.
+              p
+                ol
+                  for invalid in invalids
+                    li= invalid
+        form(action="/getting-started", method="post", accept-charset="UTF-8")
+          fieldset
+            input(name="email", type="text", placeholder="Email")
+            input(name="password", type="password", placeholder="Password")
+            input(type="hidden", name="_csrf", value=csrf)
+            br
+            input.btn.btn-primary(data-disable-with="Signing up...", type="submit", name="commit") Sign up
+
+      else
+        if user.verification.verified
+          p You've successfully signed up and verified your email. Have fun betting!
+        else
+          if "undefined" !== typeof resent && resent
+            div(class="alert")
+              button.close(type="button", data-dismiss="alert") &times
+              |  Your verification email has been resent.
+          if "undefined" !== typeof verified && !verified
+            div(class="alert alert-error")
+              button.close(type="button", data-dismiss="alert") &times
+              strong Oops!
+              |  That verification code is invalid.
+          p
+            | You've successfully signed up and now need to verify your email.
+            | An email has been sent to your email address with further details.
+            | If you haven't received the email within a few minutes, check
+            | your spam folder or try resending the email below. If you can't click
+            | the link in your email, you can manually enter the code.
+          form.form-inline(action="/verify", method="post", accept-charset="UTF-8")
+            fieldset
+              input(name="code", type="text", placeholder="Code")
+              span  
+              input.btn.btn-primary(data-disable-with="Verifying...", name="commit", type="submit", value="Verify")
+          a.btn.btn-primary(href="/verify?resend=1", data-disable-with="Resending...") Resend verification email
+  .span4
+    h3 Step 2
+    p
+    | Place a bet on a video entry on the current betting round. Each round starts off in the betting phase
+    | which lasts 1 day, then the view count is recorded and it enters the pending phase.
+    | The pending phase last 3 days, after which the final view count is recorded.
+    p
+    | The entry in a round that has the highest change in views
+    | wins! All bettors who staked on the winning entry receive their fair share of the total bets across all entries.
+    | You can see the progress of your previous bets on your 
+    a(href="/bets") bets
+    |  page and a list of old rounds on the 
+    a(href="/rounds") rounds
+    |  page.
+  .span4
+    h3 Step 3
+    p
+      | If you win, an invoice will be sent to the email you signed up with that has instructions to receive your bitcoins.
+      | A small tax of 1% of every winning bettors profits are taken away to maintain
+      | the website.
+      | However, we only take the tax away from profits if we're sure that every winning
+      | bettor makes their money back, at the very least.
+
+  .span12.top-buffer
+    h2.text-center Gamble responsibly!

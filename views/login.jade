@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  .span6.offset3.thumbnail
+    .caption
+      h1.text-center Sign In
+      if "undefined" !== typeof invalids
+        if 1 === invalids.length
+          div(class="alert alert-error")
+            button.close(type="button", data-dismiss="alert") &times
+            strong Oops!
+            |  #{invalids[0]}
+        else
+          div(class="alert alert-error")
+            button.close(type="button", data-dismiss="alert") &times
+            strong Oops!
+            |  There are a few issues with what you've entered.
+            p
+              ol
+                for invalid in invalids
+                  li= invalid
+      form.form-horizontal(action="/login", method="post", accept-charset="UTF-8")
+        .controls
+        .control-group
+          label.control-label(for="email") Email
+          .controls
+            input(name="email", type="text", placeholder="Email")
+        .control-group
+          label.control-label(for="password") Password
+          .controls
+            input(name="password", type="password", placeholder="Password")
+        .control-group
+          .controls
+            label.checkbox
+              input(name="remember", type="checkbox")
+              | Remember me
+        input(type="hidden", name="_csrf", value=csrf)
+        .controls
+          input.btn.btn-primary(data-disable-with="Signing in...", type="submit", name="commit", value="Sign in")
+          br
+          br
+          a(href="/getting-started") Don't have an account?
+          br
+          a(href="/recover") Lost your password?

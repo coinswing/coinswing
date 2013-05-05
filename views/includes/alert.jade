@@ -1,0 +1,6 @@
+for alert in alerts
+  div(class="alert alert-#{alert.type}")
+    button.close(type="button", data-dismiss="alert") &times
+    strong= alert.tag
+    |  #{alert.message}
+- unalert();
